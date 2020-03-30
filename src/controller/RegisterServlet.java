@@ -2,15 +2,16 @@ package controller;
 
 import java.io.IOException;
 import java.sql.Connection;
-import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import util.DBUtil;
 
 /**
  * Servlet implementation class RegisterServlet
@@ -26,6 +27,51 @@ public class RegisterServlet extends HttpServlet {
 		// TODO Auto-generated constructor stub
 	}
 
+	public void service(HttpServletRequest request, HttpServletResponse response)
+		throws ServletException, IOException {
+		String contextPath = request.getContextPath();// 得到路径
+		request.setCharacterEncoding("UTF-8");
+		String nameString = request.getParameter("name");
+		String emailString = request.getParameter("email");
+		String passwordString = request.getParameter("password");
+		String sqlString = "INSERT INTO `user` VALUES(NULL,?,?,?)";
+		Connection con = new DBUtil().getCon();// 用con操作数据库
+		try {
+			PreparedStatement statement = con.prepareStatement(sqlString);
+			statement.setString(1, nameString);
+			statement.setString(2, passwordString);
+			statement.setString(3, emailString);
+			if(statement.executeUpdate()>0) {
+				System.out.println("注册成功");
+				String loginString=contextPath+"/Login.html";
+				response.sendRedirect(loginString);
+			}else {
+				System.out.println("注册失败");
+			}
+			
+			/*Statement state=con.createStatement();/
+			int count = statement.executeUpdate(sqlString);
+			if (count > 0) {
+				System.out.println("注册成功");
+			} else {
+				System.out.println("注册失败");
+			}*/
+			
+			statement.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		try {
+			con.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+
+			}
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
@@ -33,50 +79,7 @@ public class RegisterServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String contextPath = request.getContextPath();// 得到路径
-		request.setCharacterEncoding("UTF-8");
-		int count = 0;
-		Connection connection = null;
-		Statement statement = null;
-		try {
-			Class.forName("com.mysql.jdbc.Driver.class");
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 
-		try {
-			connection = DriverManager.getConnection(
-					"jdbc:mysql://localhost:3306/db_meadsystem?useUnicode=true&characterEncoding=utf8", "root", "");
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-		try {
-			statement = connection.createStatement();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		String nameString = request.getParameter("name");
-		String emailString = request.getParameter("email");
-		String passwordString = request.getParameter("password");
-		String sqlString = "INSERT INTO `user` VALUES(NULL,?,?,?)";
-
-		try {
-			count = statement.executeUpdate(sqlString);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		if (count > 0) {
-			System.out.println("注册成功");
-			String loginString = contextPath + "Login.html";
-			response.sendRedirect(loginString);
-		} else {
-			System.out.println("注册失败");
-		}
 	}
 
 	/**
