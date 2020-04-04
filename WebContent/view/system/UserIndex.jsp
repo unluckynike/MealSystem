@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="zh">
 	<head>
@@ -57,7 +59,7 @@
         </div>
   </div>
     </div>
-<script src="../../js/jquery.min.js"></script> js/
+<script src="../../js/jquery.min.js"></script> 
 <script type="text/javascript" src="../../js/bootstable.js"></script> 
 <script type="text/javascript">
 		$('#mytable').SetEditable({

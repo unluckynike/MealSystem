@@ -69,7 +69,7 @@ public class LoginServlet extends HttpServlet {
 					response.sendRedirect(adminIndexString);
 				} else {
 					//ÆÕÍ¨ÓÃ»§µÇÂ¼
-					String indexString = contextPath + "/view/system/index.html";
+					String indexString = contextPath + "/view/system/UserIndex.jsp";
 					response.sendRedirect(indexString);
 				}
 				System.out.println(
