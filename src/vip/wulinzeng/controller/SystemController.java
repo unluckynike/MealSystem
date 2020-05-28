@@ -12,6 +12,7 @@ import vip.wulinzeng.dao.QueryFooddao;
 import vip.wulinzeng.dao.Userdao;
 import vip.wulinzeng.model.Food;
 import vip.wulinzeng.model.User;
+import vip.wulinzeng.utils.FoodUtil;
 
 /**
  * 首页菜品查询
@@ -39,49 +40,46 @@ public class SystemController {
 		model.addObject("feature", queryFood.getFeatureString());
 		model.addObject("material", queryFood.getMaterialString());
 		model.addObject("price", queryFood.getPrice());
-		model.addObject("type", hoosefoodtype(queryFood.getType()));
+		model.addObject("type", FoodUtil.foodType(queryFood.getType()));
 		model.addObject("hits", queryFood.getHits());
-		model.addObject("comment", queryFood.getComment());
+		model.addObject("comment", FoodUtil.foodComment(queryFood.getComment()));
 		model.setViewName("HomePagesFoods");
 		return model;
 	}
 
-	public String hoosefoodtype(int type) {
-		switch (type) {
-		case 1:
-			return "家常";
-		case 2:
-			return "凉菜";
-		case 3:
-			return "主食";
-		case 4:
-			return "川菜";
-		}
-		return "暂无分类";
-	}
-	
+	/**
+	 * 登录
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value = "/Login")
 	public ModelAndView Login(ModelAndView model) {
 		model.setViewName("Login");
 		return model;
 	}
 	
-	@RequestMapping(value = "/UserLogin",method = RequestMethod.GET)
+	
+	@RequestMapping(value = "/UserLogin",method = RequestMethod.POST)
 	public ModelAndView userLogin(
 			@RequestParam(name = "username",required = true) String usernameString,
 			@RequestParam(name = "password",required = true) String passwordString,
 	       ModelAndView model) throws SQLException {
-		System.out.println("测试："+usernameString +"密码："+passwordString);
+		//System.out.println("测试："+usernameString +"密码："+passwordString);
 		User user=new Userdao().queryUser(usernameString, passwordString);
-		System.out.println("dao+:"+user.getIdentString()+user.getAddressString());
+		//System.out.println("dao+:"+user.getIdentString()+user.getAddressString());
 		if (user.getIdentString().equals("1")) {
-			model.setViewName("AdminIndex");
+			model.setViewName("admin/AdminIndex");
 		}else {
 			model.setViewName("UserIndex");
 		}
 		return model;
 	}
 	
+	/**
+	 * 新用户注册
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value = "/Register",method = RequestMethod.GET)
 	public ModelAndView Register(ModelAndView model) {
 		model.setViewName("Register");
@@ -94,10 +92,13 @@ public class SystemController {
 			@RequestParam(name = "password",required = true ) String passwordString,
 			@RequestParam(name = "telephone",required = true ) String telephoneString,
 			@RequestParam(name = "address",required = true )   String addressString,
-			ModelAndView model) {
-		
+			ModelAndView model) throws SQLException {
 		System.out.println(usernameString+" "+passwordString+" "+telephoneString+" "+addressString+" ");
-		model.setViewName("RegisterSuccess");
+		if (new Userdao().addUser(usernameString, passwordString, telephoneString, addressString)) {
+			model.setViewName("RegisterSuccess");
+		}else {
+			model.setViewName("RegisterFaild");
+		}
 		return model;
 	}
 }

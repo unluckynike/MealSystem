@@ -99,8 +99,8 @@ body {
 				</div>
 				
 				<div class="text-left form-group bmd-form-group">
-					<label for="password" class="bmd-label-floating">确认密码</label> <input
-						id="password" type="password" class="form-control" name="password"
+					<label for="configpassword" class="bmd-label-floating">确认密码</label> <input
+						id="password" type="password" class="form-control" name="configpassword"
 						required="">
 				</div>
 				

@@ -8,6 +8,11 @@ import java.sql.SQLException;
 import vip.wulinzeng.model.Food;
 import vip.wulinzeng.utils.DBUtil;
 
+/**
+ * 首页显示的菜品 点击进入详情页面
+ * @author 22304
+ *
+ */
 public class QueryFooddao {
 
 	public Food HomePageQueryfood(int id) throws SQLException {

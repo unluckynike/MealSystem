@@ -7,6 +7,6 @@
 <title>注册成功</title>
 </head>
 <body>
-注册成功
+ <a href="${pageContext.request.contextPath}/Login.do" class="btn btn-success">注册成功 去登录</a>
 </body>
 </html>
