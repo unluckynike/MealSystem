@@ -9,6 +9,8 @@
 <body>
 
  <a href="${pageContext.request.contextPath}/Register.do" class="btn btn-success">注册失败 请重新注册</a>
+ <hr>
+ <h5>正在建设中</h5>
  
 </body>
 </html>

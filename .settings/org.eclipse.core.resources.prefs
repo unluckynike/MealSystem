@@ -8,6 +8,7 @@ encoding//WebContent/WEB-INF/views/RegisterFaild.jsp=UTF-8
 encoding//WebContent/WEB-INF/views/RegisterSuccess.jsp=UTF-8
 encoding//WebContent/WEB-INF/views/UserIndex.jsp=UTF-8
 encoding//WebContent/WEB-INF/views/admin/AdminIndex.jsp=UTF-8
+encoding//WebContent/WEB-INF/views/admin/user_add.jsp=UTF-8
 encoding//WebContent/WEB-INF/views/admin/user_list.jsp=UTF-8
 encoding//WebContent/WEB-INF/views/include/footer.jsp=UTF-8
 encoding//WebContent/WEB-INF/views/include/top.jsp=UTF-8

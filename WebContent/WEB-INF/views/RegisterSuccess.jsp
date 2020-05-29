@@ -8,5 +8,9 @@
 </head>
 <body>
  <a href="${pageContext.request.contextPath}/Login.do" class="btn btn-success">注册成功 去登录</a>
+  
+  <hr>
+  <h5>正在建设中</h5>
+  
 </body>
 </html>

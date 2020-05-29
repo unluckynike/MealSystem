@@ -43,7 +43,7 @@ public class Userdao {
 			user.setTelephoneString(result.getString("telephone"));
 			user.setAddressString(result.getString("address"));
 		} else {
-			System.out.println("登录失败");
+			System.out.println("dao登录失败");
 		}
 		preparedStatement.close();
 		queryConnection.close();
@@ -51,7 +51,7 @@ public class Userdao {
 	}
 
 	/**
-	 * 首页用户注册
+	 * 增加用户
 	 * 
 	 * @param usernameString
 	 * @param passwordString
@@ -60,22 +60,24 @@ public class Userdao {
 	 * @return flag
 	 * @throws SQLException
 	 */
-	public boolean addUser(String usernameString, String passwordString, String telephoneString, String addressString)
+	public boolean addUser(String usernameString, String passwordString, String identsString,String telephoneString, String addressString)
 			throws SQLException {
 		boolean flag = false;
-		String sqlString = "INSERT INTO user VALUES(null,?,?,0,?,?)";
+		String sqlString = "INSERT INTO user VALUES(null,?,?,?,?,?)";
 		Connection addConnection = new DBUtil().getCon();
 		PreparedStatement preparedStatement = addConnection.prepareStatement(sqlString);
 		preparedStatement.setString(1, usernameString);
 		preparedStatement.setString(2, passwordString);
-		preparedStatement.setString(3, telephoneString);
-		preparedStatement.setString(4, addressString);
+		preparedStatement.setString(3, identsString);
+		preparedStatement.setString(4, telephoneString);
+		preparedStatement.setString(5, addressString);
 		if (preparedStatement.executeUpdate() > 0) {
-			return true;
+			flag = true;
+		} else {
+			System.out.println("Userdao-addUser:注册失败");
 		}
 		preparedStatement.close();
 		addConnection.close();
-		System.out.println("注册失败");
 		return flag;
 	}
 
@@ -90,11 +92,11 @@ public class Userdao {
 		ArrayList<User> retList = new ArrayList<User>();
 		String sqlString = "SELECT * FROM user ";// PS末尾多一个空格
 		if (!StringUtil.isEmpty(inputString)) {// 模糊查询
-			sqlString=sqlString+"WHERE username LIKE '%" + inputString + "%'";
+			sqlString = sqlString + "WHERE username LIKE '%" + inputString + "%'";
 		}
 		Connection queryConnection = new DBUtil().getCon();
 		PreparedStatement preparedStatement = queryConnection.prepareStatement(sqlString);
-		//System.out.println("ssql:"+sqlString);
+		// System.out.println("ssql:"+sqlString);
 		ResultSet executeQuery = preparedStatement.executeQuery();
 		while (executeQuery.next()) {
 			User user = new User();
@@ -108,8 +110,33 @@ public class Userdao {
 		}
 		preparedStatement.close();
 		queryConnection.close();
-		//System.out.println("retlist:"+retList);
+		// System.out.println("retlist:"+retList);
 		return retList;
 	}
 
+	/**
+	 * 管理员删除用户 bug
+	 * @param id
+	 * @return flas
+	 * @throws SQLException
+	 */
+	public boolean adminDeleteUser(int id) throws SQLException {
+		boolean flag = false;
+		String sqlString = "DELETE FROM user WHERE id=?";
+		Connection deleteConnection = new DBUtil().getCon();
+		PreparedStatement prepareStatement = deleteConnection.prepareStatement(sqlString);
+		prepareStatement.setInt(1, id);
+		if (prepareStatement.executeUpdate() > 0) {
+			flag=true;
+		}else {
+			System.out.println("Userdao-adminDeleteUser:删除失败");
+		}
+		prepareStatement.close();
+		deleteConnection.close();
+		//System.out.println("sql:"+sqlString);
+		return flag;
+	}
+	
+	
+	
 }

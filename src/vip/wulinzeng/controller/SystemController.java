@@ -93,8 +93,9 @@ public class SystemController {
 			@RequestParam(name = "telephone",required = true ) String telephoneString,
 			@RequestParam(name = "address",required = true )   String addressString,
 			ModelAndView model) throws SQLException {
-		System.out.println(usernameString+" "+passwordString+" "+telephoneString+" "+addressString+" ");
-		if (new Userdao().addUser(usernameString, passwordString, telephoneString, addressString)) {
+		//System.out.println(usernameString+" "+passwordString+" "+telephoneString+" "+addressString+" ");
+		String identString="0";//用户在登录页面注册均为普通用户
+		if (new Userdao().addUser(usernameString, passwordString, identString,telephoneString, addressString)) {
 			model.setViewName("RegisterSuccess");
 		}else {
 			model.setViewName("RegisterFaild");
