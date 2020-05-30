@@ -12,7 +12,6 @@ import vip.wulinzeng.dao.QueryFooddao;
 import vip.wulinzeng.dao.Userdao;
 import vip.wulinzeng.model.Food;
 import vip.wulinzeng.model.User;
-import vip.wulinzeng.utils.FoodUtil;
 
 /**
  * Ê×Ò³²ËÆ·²éÑ¯
@@ -40,9 +39,9 @@ public class SystemController {
 		model.addObject("feature", queryFood.getFeatureString());
 		model.addObject("material", queryFood.getMaterialString());
 		model.addObject("price", queryFood.getPrice());
-		model.addObject("type", FoodUtil.foodType(queryFood.getType()));
+		model.addObject("type", queryFood.getType());
 		model.addObject("hits", queryFood.getHits());
-		model.addObject("comment", FoodUtil.foodComment(queryFood.getComment()));
+		model.addObject("comment", queryFood.getComment());
 		model.setViewName("HomePagesFoods");
 		return model;
 	}

@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import vip.wulinzeng.dao.Fooddao;
 import vip.wulinzeng.dao.Userdao;
+import vip.wulinzeng.model.Food;
 import vip.wulinzeng.model.User;
 
 /**
@@ -25,6 +27,7 @@ import vip.wulinzeng.model.User;
 public class AdminController {
 	
 	private Userdao userdao=new Userdao();
+	private Fooddao fooddao=new Fooddao();
 
 	@RequestMapping(value = "/HomePages")
 	public ModelAndView welcome(ModelAndView model) {
@@ -163,10 +166,23 @@ public class AdminController {
 		return model;
 	}
 	
-	//菜品种类管理
-	@RequestMapping(value = "/FoodListQuery")
-	public ModelAndView queryFood(ModelAndView model) {
-		
+	//菜品管理
+	@RequestMapping(value = "/FoodList")
+	public ModelAndView foodList(ModelAndView model) throws SQLException {
+		ArrayList<Food> foodList=new ArrayList<Food>();
+		foodList=fooddao.addminQueryFood(-1, "");
+		model.addObject("foodlist",foodList );
+		model.setViewName("admin/food_list");
+		return model;
+	}
+	
+	@RequestMapping(value = "/FoodListQuery",method = RequestMethod.POST)
+	public ModelAndView foodListQuery(
+			@RequestParam(name = "searchfood",required = true)String searchString,
+			ModelAndView model) throws SQLException {
+		ArrayList<Food> searcList=new ArrayList<Food>();
+		searcList=fooddao.addminQueryFood(-1, searchString);
+		model.addObject("foodlist", searcList);
 		model.setViewName("admin/food_list");
 		return model;
 	}

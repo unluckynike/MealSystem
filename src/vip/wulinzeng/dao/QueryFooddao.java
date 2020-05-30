@@ -7,6 +7,7 @@ import java.sql.SQLException;
 
 import vip.wulinzeng.model.Food;
 import vip.wulinzeng.utils.DBUtil;
+import vip.wulinzeng.utils.FoodUtil;
 
 /**
  * 首页显示的菜品 点击进入详情页面
@@ -29,10 +30,10 @@ public class QueryFooddao {
 			foodRst.setFeatureString(executeResultSet.getString("feature"));
 			foodRst.setMaterialString(executeResultSet.getString("material"));
 			foodRst.setPrice(executeResultSet.getInt("price"));
-			foodRst.setType(executeResultSet.getInt("type"));
+			foodRst.setType(FoodUtil.foodType(executeResultSet.getInt("type")));
 			foodRst.setPictureString(executeResultSet.getString("picture"));
 			foodRst.setHits(executeResultSet.getInt("hits"));
-			foodRst.setComment(executeResultSet.getInt("comment"));
+			foodRst.setComment(FoodUtil.foodComment(executeResultSet.getInt("comment")));
 		}
 		else {
 			System.out.println("查询无结果");

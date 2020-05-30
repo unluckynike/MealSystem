@@ -12,7 +12,7 @@ import vip.wulinzeng.utils.StringUtil;
 import vip.wulinzeng.utils.UserUtil;
 
 /**
- * 操作用户表
+ * 操作user表
  * 
  * @author 22304
  *

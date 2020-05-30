@@ -12,10 +12,10 @@ public class Food {
 	private String featureString;//特色
 	private String materialString;//食材
 	private int    price;
-	private int    type;//分类
+	private String    type;//分类
 	private String pictureString;
 	private int    hits;//点击率
-	private int    comment;
+	private String    comment;
 	public int getId() {
 		return id;
 	}
@@ -46,10 +46,10 @@ public class Food {
 	public void setPrice(int price) {
 		this.price = price;
 	}
-	public int getType() {
+	public String getType() {
 		return type;
 	}
-	public void setType(int type) {
+	public void setType(String type) {
 		this.type = type;
 	}
 	public String getPictureString() {
@@ -64,10 +64,10 @@ public class Food {
 	public void setHits(int hits) {
 		this.hits = hits;
 	}
-	public int getComment() {
+	public String getComment() {
 		return comment;
 	}
-	public void setComment(int comment) {
+	public void setComment(String comment) {
 		this.comment = comment;
 	}
 	
