@@ -33,6 +33,13 @@ public class AdminController {
 		return model;
 	}
 	
+	//回管理员首页
+	@RequestMapping(value = "/BackAdminIndex")
+	public ModelAndView backAdminIndex(ModelAndView model) {
+		model.setViewName("admin/AdminIndex");
+		return model;
+	}
+	//管理用户
 	/**
 	 * 查询用户
 	 * @param model
@@ -42,7 +49,7 @@ public class AdminController {
 	@RequestMapping(value = "/UserList",method = RequestMethod.GET)
 	public ModelAndView userList(ModelAndView model) throws SQLException {		
 		ArrayList<User> queryUsers=new ArrayList<User>();
-		queryUsers=userdao.adminQueryUser("");
+		queryUsers=userdao.adminQueryUser(-1,"");
 		/*for(int i=0;i<queryUsers.size();i++) {
 			User user= (User)queryUsers.get(i);
 			System.out.println("test:"+user.getUsernameString());
@@ -63,7 +70,7 @@ public class AdminController {
 			@RequestParam(name = "searchuser",required = true) String searchuserString,ModelAndView model) throws SQLException {
 		ArrayList<User> searchList=new ArrayList<User>();
 		//System.out.println("test02:"+searchuserString);
-		searchList=userdao.adminQueryUser(searchuserString);
+		searchList=userdao.adminQueryUser(-1,searchuserString);
 		model.addObject("queryuser", searchList);
 		model.setViewName("admin/user_list");
 		return model;
@@ -83,7 +90,7 @@ public class AdminController {
 			@RequestParam(name = "id",required = true)int id,HttpServletRequest request,ModelAndView model) throws SQLException, IOException {
 		HttpSession session = request.getSession();
 		session.setAttribute("ID", id);
-		System.out.println("test123:"+id);
+		//System.out.println("test123:"+id);
 		if (userdao.adminDeleteUser(id)) {
 			model.setViewName("admin/user_list");
 			//System.out.println("程序执行了");		
@@ -121,5 +128,47 @@ public class AdminController {
 		return model;
 	}
 	
+	/**
+	 * 修改用户信息
+	 * @param model
+	 * @return
+	 * @throws SQLException 
+	 */
+	@RequestMapping(value = "/UserListUpdate")
+	public ModelAndView updateUser(
+			@RequestParam(name = "id",required = true)int updateID,ModelAndView model) throws SQLException {
+		ArrayList<User> updateList=new ArrayList<User>();
+		updateList=userdao.adminQueryUser(updateID,"");
+		model.addObject("username", updateList.get(0).getUsernameString());
+		model.addObject("updateuser", updateList);
+		model.setViewName("admin/user_update");
+		return model;
+	}
+	
+	@RequestMapping(value = "/UserListUpdateDo",method = RequestMethod.POST)
+	public ModelAndView updateUserDo(
+			@RequestParam(name = "id",required = true)int id,
+			@RequestParam(name = "username",required = true)String usernameString,
+			@RequestParam(name = "password",required = true)String passwordString,
+			@RequestParam(name = "ident",required = true)String identString,
+			@RequestParam(name = "telephone",required =  true)String telephoneString,
+			@RequestParam(name = "address",required = true)String addressString,
+			ModelAndView model) throws SQLException {
+		//System.out.println("controller-UserListUpdateDo:"+id+" "+usernameString+" "+passwordString+" "+identString+" "+telephoneString+" "+addressString);
+		if(userdao.addminUpdateUser(id, usernameString, passwordString, identString, telephoneString, addressString)) {
+			model.setViewName("admin/user_list");
+		}else {
+			System.out.println("controller-UserListUpdateDo:修改失败");
+		}
+		return model;
+	}
+	
+	//菜品种类管理
+	@RequestMapping(value = "/FoodListQuery")
+	public ModelAndView queryFood(ModelAndView model) {
+		
+		model.setViewName("admin/food_list");
+		return model;
+	}
 	
 }

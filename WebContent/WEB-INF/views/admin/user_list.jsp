@@ -44,10 +44,17 @@
 
 			</div>
 			<div class="col-sm">
-				<div class="mybtn14_3">
+				<div class="mybtn14_3" style="float:left">
 					<a href="${pageContext.request.contextPath}/UserListAdd.do" class="btn btn-success" style="">添加新用户</a>
 				</div>
+				<div class="mybtn14_3" style="float:left;margin-left:10px;">
+					<a href="${pageContext.request.contextPath}/BackAdminIndex.do" class="btn btn-success" style="">回到首页</a>
+				</div>
+				
 			</div>
+		          <div class="alert alert-danger" role="alert">
+                                                  每次进行完管理操作（添加新用戶、修改、删除）请点击查询用户按钮以确认
+                 </div>
 		</div>
 	</div>
 
@@ -81,7 +88,8 @@
 								type="submit" class="btn btn-danger" value="删除">
 						</form>
 
-						<form action="">
+						<form action="${pageContext.request.contextPath}/UserListUpdate.do"
+						      method="post">
 							<input type=hidden name=id value="${user.id}"> <input
 								type="submit" class="btn btn-primary" value="修改">
 						</form>

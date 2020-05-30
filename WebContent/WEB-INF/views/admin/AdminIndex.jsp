@@ -18,7 +18,7 @@
 		<li class="nav-item"><a class="nav-link active" href="UserList.do">用户管理</a>
 		</li>
 		<li class="nav-item"><a class="nav-link " href="#">身份：管理员</a></li>
-		<li class="nav-item"><a class="nav-link active" href="#">菜品管理</a>
+		<li class="nav-item"><a class="nav-link active" href="FoodListQuery.do">菜品管理</a>
 		</li>
 		<li class="nav-item"><a class="nav-link disabled" href="#"
 			tabindex="-1" aria-disabled="true">退出</a></li>
