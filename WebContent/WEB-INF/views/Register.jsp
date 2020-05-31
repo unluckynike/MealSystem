@@ -122,15 +122,13 @@ body {
 					<button type="reset"
 					class="btn btn-lg btn-primary btn-block btn-raised">重置</button>
 				<a class="btn btn-link" href="${pageContext.request.contextPath}/Login.do" > 去登录 </a> <a
-					href="#"> 返回首页 </a>
+					href="HomePages.do"> 返回首页 </a>
 
 			</form>
 		</div>
 	</div>
 
 			<%@ include file="include/footer.jsp"%>
-
-
 
 	<script src="../../static/jquery.min.js"></script>
 	<script src="../../static/popper.js"></script>

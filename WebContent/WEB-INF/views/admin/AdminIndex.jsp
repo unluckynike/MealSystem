@@ -11,21 +11,16 @@
 <title>管理员首页</title>
 </head>
 <body>
-
 	<%@ include file="../include/top.jsp"%>
-
 	<ul class="nav nav-pills nav-justified">
 		<li class="nav-item"><a class="nav-link active" href="UserList.do">用户管理</a>
 		</li>
 		<li class="nav-item"><a class="nav-link " href="#">身份：管理员</a></li>
 		<li class="nav-item"><a class="nav-link active" href="FoodList.do">菜品管理</a>
 		</li>
-		<li class="nav-item"><a class="nav-link disabled" href="#"
-			tabindex="-1" aria-disabled="true">退出</a></li>
+		<li class="nav-item"><a class="nav-link " href="HomePages.do">退出</a></li>
 	</ul>
-
 	<%@ include file="../include/welcome.jsp"%>
 	<%@ include file="../include/footer.jsp"%>
-
 </body>
 </html>

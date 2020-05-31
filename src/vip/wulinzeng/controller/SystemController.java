@@ -63,12 +63,14 @@ public class SystemController {
 			@RequestParam(name = "username",required = true) String usernameString,
 			@RequestParam(name = "password",required = true) String passwordString,
 	       ModelAndView model) throws SQLException {
-		//System.out.println("≤‚ ‘£∫"+usernameString +"√‹¬Î£∫"+passwordString);
 		User user=new Userdao().queryUser(usernameString, passwordString);
-		//System.out.println("dao+:"+user.getIdentString()+user.getAddressString());
+		if (user==null) {
+			model.setViewName("PasswordOrUserameErro");
+			return model;
+		}
 		if (user.getIdentString().equals("1")) {
 			model.setViewName("admin/AdminIndex");
-		}else {
+		} else {
 			model.setViewName("UserIndex");
 		}
 		return model;

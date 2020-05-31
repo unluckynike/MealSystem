@@ -111,7 +111,7 @@ body {
 					class="btn btn-lg btn-primary btn-block btn-raised">登录</button>
 				<a class="btn btn-link" href="${pageContext.request.contextPath}/Register.do" > 注册账号 </a> <a
 					class="btn btn-link" href="#"> 找回密码? </a> <a class="btn btn-link"
-					href="#"> 返回首页 </a>
+					href="HomePages.do">返回首页 </a>
 
 			</form>
 		</div>

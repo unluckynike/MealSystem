@@ -30,7 +30,6 @@ public class AdminController {
 
 	@RequestMapping(value = "/HomePages")
 	public ModelAndView welcome(ModelAndView model) {
-		model.addObject("author", "∫£¡÷");
 		model.setViewName("HomePages");
 		return model;
 	}
@@ -83,10 +82,8 @@ public class AdminController {
 			@RequestParam(name = "id",required = true)int id,HttpServletRequest request,ModelAndView model) throws SQLException, IOException {
 		HttpSession session = request.getSession();
 		session.setAttribute("ID", id);
-		//System.out.println("test123:"+id);
 		if (userdao.adminDeleteUser(id)) {
-			model.setViewName("admin/user_list");
-			//System.out.println("≥Ã–Ú÷¥––¡À");		
+			model.setViewName("admin/user_list");	
 		}else {
 			System.out.println("controller-UserListDelete£∫…æ≥˝ ß∞‹");
 		}
@@ -198,4 +195,40 @@ public class AdminController {
 		model.setViewName("admin/foodtype_list");
 		return model;
 	}
+	
+	/**
+	 * ÃÌº”≤À∆∑∑÷
+	 * @param model
+	 * @return model
+	 */
+	@RequestMapping(value = "/FoodTypeAdd")
+	public ModelAndView foodTypeAdd(ModelAndView model) {
+        model.setViewName("admin/foodtype_add");
+		return model;
+	}
+	
+	@RequestMapping(value = "/FoodTypeAddDo",method = RequestMethod.POST)
+	public ModelAndView foodTypeAddDo(
+			@RequestParam(name = "newfoodtype",required = true)String addfoodtypeString,ModelAndView model) throws SQLException {
+	  if (foodtypedao.foodTypeAdd(addfoodtypeString)) {
+		  model.setViewName("admin/foodtype_list");
+	} else {
+		System.out.println("controller-foodTypeAddDo:ÃÌº” ß∞‹");
+	}
+		return model;
+	}
+	
+	@RequestMapping(value = "/FoodTypeDelete",method = RequestMethod.POST)
+	public ModelAndView foodTypeDelete(
+			@RequestParam(name = "id",required = true)int id, ModelAndView model) throws SQLException {
+		if (foodtypedao.foodTypeDelete(id)) {
+			model.setViewName("admin/foodtype_list");
+		}else {
+			System.out.println("controller-foodTypeAddDo:…æ≥˝ ß∞‹");
+		}
+		return model;
+	}
+	
+	
+	
 }

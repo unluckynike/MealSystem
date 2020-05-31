@@ -37,12 +37,12 @@
 			</div>
 			<div class="col-sm">
 				<div class="mybtn14_3" style="float: left">
-					<a href="${pageContext.request.contextPath}/.do"
+					<a href="${pageContext.request.contextPath}/FoodTypeAdd.do"
 						class="btn btn-success" style="">添加新分类</a>
 				</div>
 				<div class="mybtn14_3" style="float: left; margin-left: 10px;">
 					<a href="${pageContext.request.contextPath}/BackAdminIndex.do"
-						class="btn btn-success" style="">回到首页</a>
+						class="btn btn-success" style="">返回首页</a>
 				</div>
 
 			</div>
@@ -68,21 +68,13 @@
 						<td>${foodtype.typenameString }</td>
 						<td>
 
-							<form action="${pageContext.request.contextPath}/.do"
+							<form action="${pageContext.request.contextPath}/FoodTypeDelete.do"
 								method="post">
 								<input type=hidden name=id value="${foodtype.id }"> <input
 									style="float: left;" type="submit" class="btn btn-danger"
 									value="删除">
 							</form>
-
-
-							<form action="${pageContext.request.contextPath}/.do"
-								method="post">
-								<input type=hidden name=id value="${foodtype.id }"> <input
-									style="float: left; margin-right: 10px;" type="submit"
-									class="btn btn-primary" value="修改">
-							</form>
-
+							
 						</td>
 					</tr>
 				</tbody>

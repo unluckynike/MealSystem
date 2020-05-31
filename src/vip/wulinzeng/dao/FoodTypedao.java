@@ -28,7 +28,6 @@ public class FoodTypedao {
 			sqlString=sqlString+"WHERE id="+id+"";
 		}
 		PreparedStatement preparedStatement=queryConnection.prepareStatement(sqlString);
-		System.out.println(sqlString);
 		ResultSet executeQuery = preparedStatement.executeQuery();
 		while(executeQuery.next()) {
 			FoodType foodType=new FoodType();
@@ -42,7 +41,36 @@ public class FoodTypedao {
 		return retList;
 	}
 	
+	public boolean foodTypeAdd(String foodtypeString) throws SQLException {
+		boolean flag=false;
+		String sqlString="INSERT INTO foodtype VALUES(NULL,?)";
+		Connection addConnection=new DBUtil().getCon();
+		PreparedStatement preparedStatement=addConnection.prepareStatement(sqlString);
+		preparedStatement.setString(1, foodtypeString);
+		if (preparedStatement.executeUpdate()>0) {
+			flag=true;
+		}else {
+			System.out.println("FoodTypedao-foodTypeAdd:Ìí¼ÓÊ§°Ü");
+		}
+		preparedStatement.close();
+		addConnection.close();
+		return flag;
+	}
 	
-	
+	public boolean foodTypeDelete(int id) throws SQLException {
+		boolean flag=false;
+		String sqlString="DELETE FROM foodtype WHERE id=?";
+		Connection deleteConnection=new DBUtil().getCon();
+		PreparedStatement preparedStatement=deleteConnection.prepareStatement(sqlString);
+		preparedStatement.setInt(1, id);
+		if (preparedStatement.executeUpdate()>0) {
+			flag=true;
+		}else {
+			System.out.println("FoodTypedao-foodTypeAdd:É¾³ýÊ§°Ü");
+		}
+		preparedStatement.close();
+		deleteConnection.close();
+		return flag;
+	}
 	
 }

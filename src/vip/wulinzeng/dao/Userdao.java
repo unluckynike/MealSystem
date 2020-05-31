@@ -43,7 +43,7 @@ public class Userdao {
 			user.setTelephoneString(result.getString("telephone"));
 			user.setAddressString(result.getString("address"));
 		} else {
-			System.out.println("daoµÇÂ¼Ê§°Ü");
+			System.out.println("userdao-queryUser:µÇÂ¼Ê§°Ü");
 		}
 		preparedStatement.close();
 		queryConnection.close();
@@ -74,7 +74,7 @@ public class Userdao {
 		if (preparedStatement.executeUpdate() > 0) {
 			flag = true;
 		} else {
-			System.out.println("Userdao-addUser:×¢²áÊ§°Ü");
+			System.out.println("Userdao-addUser:Ìí¼ÓÊ§°Ü");
 		}
 		preparedStatement.close();
 		addConnection.close();
