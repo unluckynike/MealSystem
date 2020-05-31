@@ -9,6 +9,7 @@ encoding//WebContent/WEB-INF/views/RegisterSuccess.jsp=UTF-8
 encoding//WebContent/WEB-INF/views/UserIndex.jsp=UTF-8
 encoding//WebContent/WEB-INF/views/admin/AdminIndex.jsp=UTF-8
 encoding//WebContent/WEB-INF/views/admin/food_list.jsp=UTF-8
+encoding//WebContent/WEB-INF/views/admin/foodtype_list.jsp=UTF-8
 encoding//WebContent/WEB-INF/views/admin/user_add.jsp=UTF-8
 encoding//WebContent/WEB-INF/views/admin/user_list.jsp=UTF-8
 encoding//WebContent/WEB-INF/views/admin/user_update.jsp=UTF-8

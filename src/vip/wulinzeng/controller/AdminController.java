@@ -2,7 +2,6 @@ package vip.wulinzeng.controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -13,10 +12,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import vip.wulinzeng.dao.FoodTypedao;
 import vip.wulinzeng.dao.Fooddao;
 import vip.wulinzeng.dao.Userdao;
-import vip.wulinzeng.model.Food;
-import vip.wulinzeng.model.User;
 
 /**
  * 管理员
@@ -28,6 +26,7 @@ public class AdminController {
 	
 	private Userdao userdao=new Userdao();
 	private Fooddao fooddao=new Fooddao();
+	private FoodTypedao foodtypedao=new FoodTypedao();
 
 	@RequestMapping(value = "/HomePages")
 	public ModelAndView welcome(ModelAndView model) {
@@ -51,13 +50,7 @@ public class AdminController {
 	 */
 	@RequestMapping(value = "/UserList",method = RequestMethod.GET)
 	public ModelAndView userList(ModelAndView model) throws SQLException {		
-		ArrayList<User> queryUsers=new ArrayList<User>();
-		queryUsers=userdao.adminQueryUser(-1,"");
-		/*for(int i=0;i<queryUsers.size();i++) {
-			User user= (User)queryUsers.get(i);
-			System.out.println("test:"+user.getUsernameString());
-		}*/
-		model.addObject("queryuser", queryUsers);
+		model.addObject("queryuser", userdao.adminQueryUser(-1,""));
 		model.setViewName("admin/user_list");
 		return model;
 	}
@@ -71,10 +64,7 @@ public class AdminController {
 	@RequestMapping(value = "/UserListQuery",method = RequestMethod.POST)
 	public ModelAndView userListQuery(
 			@RequestParam(name = "searchuser",required = true) String searchuserString,ModelAndView model) throws SQLException {
-		ArrayList<User> searchList=new ArrayList<User>();
-		//System.out.println("test02:"+searchuserString);
-		searchList=userdao.adminQueryUser(-1,searchuserString);
-		model.addObject("queryuser", searchList);
+		model.addObject("queryuser", userdao.adminQueryUser(-1,searchuserString));
 		model.setViewName("admin/user_list");
 		return model;
 	}
@@ -140,10 +130,8 @@ public class AdminController {
 	@RequestMapping(value = "/UserListUpdate")
 	public ModelAndView updateUser(
 			@RequestParam(name = "id",required = true)int updateID,ModelAndView model) throws SQLException {
-		ArrayList<User> updateList=new ArrayList<User>();
-		updateList=userdao.adminQueryUser(updateID,"");
-		model.addObject("username", updateList.get(0).getUsernameString());
-		model.addObject("updateuser", updateList);
+		model.addObject("username", userdao.adminQueryUser(updateID,"").get(0).getUsernameString());
+		model.addObject("updateuser", userdao.adminQueryUser(updateID,""));
 		model.setViewName("admin/user_update");
 		return model;
 	}
@@ -169,9 +157,7 @@ public class AdminController {
 	//菜品管理
 	@RequestMapping(value = "/FoodList")
 	public ModelAndView foodList(ModelAndView model) throws SQLException {
-		ArrayList<Food> foodList=new ArrayList<Food>();
-		foodList=fooddao.addminQueryFood(-1, "");
-		model.addObject("foodlist",foodList );
+		model.addObject("foodlist",fooddao.addminQueryFood(-1, "") );
 		model.setViewName("admin/food_list");
 		return model;
 	}
@@ -180,11 +166,36 @@ public class AdminController {
 	public ModelAndView foodListQuery(
 			@RequestParam(name = "searchfood",required = true)String searchString,
 			ModelAndView model) throws SQLException {
-		ArrayList<Food> searcList=new ArrayList<Food>();
-		searcList=fooddao.addminQueryFood(-1, searchString);
-		model.addObject("foodlist", searcList);
+		model.addObject("foodlist", fooddao.addminQueryFood(-1, searchString));
 		model.setViewName("admin/food_list");
 		return model;
 	}
 	
+	
+	//分类管理
+	/**
+	 * 查询菜品分类
+	 * @param model
+	 * @return model
+	 */
+	@RequestMapping(value = "/FoodTypeList")
+	public ModelAndView foodTypeList(ModelAndView model) {
+		try {
+			model.addObject("foodtypelist", foodtypedao.foodTypeQuery(-1, ""));
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		model.setViewName("admin/foodtype_list");
+		return model;
+	}
+	
+	@RequestMapping(value = "/FoodTypeListQuery",method = RequestMethod.POST)
+	public ModelAndView foodTypeListQuery(
+			@RequestParam(name = "searchfoodtype",required = true)String searchString,
+			ModelAndView model) throws SQLException {
+		model.addObject("foodtypelist", foodtypedao.foodTypeQuery(-1, searchString));
+		model.setViewName("admin/foodtype_list");
+		return model;
+	}
 }

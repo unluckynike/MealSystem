@@ -38,7 +38,7 @@
 						class="btn btn-success" style="">添加新菜品</a>
 				</div>
 				<div class="mybtn14_3" style="float: left; margin-left: 10px;">
-					<a href="${pageContext.request.contextPath}/.do"
+					<a href="${pageContext.request.contextPath}/FoodTypeList.do"
 						class="btn btn-success" style="">分类管理</a>
 				</div>
 				<div class="mybtn14_3" style="float: left; margin-left: 10px;">
@@ -52,6 +52,7 @@
 		</div>
 	</div>
 
+<div class="container-fluid">
 
 	<table class="table table-bordered" >
 		<thead class="thead-light">
@@ -70,7 +71,7 @@
 		</thead>
 		<c:forEach items="${foodlist}" var="food" varStatus="vs">
 			<tbody>
-				<tr>
+				<tr >
 					<th scope="row">${food.id }</th>
 					<td>${food.foodnameString }</td>
 					<td>${food.featureString }</td>
@@ -88,7 +89,7 @@
 						</form>
 
 						<form action="${pageContext.request.contextPath}/.do"
-							method="post">
+							method="post" style="margin-top: 10px;">
 							<input type=hidden name=id value="${food.id }"> <input
 								type="submit" class="btn btn-primary" value="修改">
 						</form>
@@ -97,7 +98,7 @@
 			</tbody>
 		</c:forEach>
 	</table>
-
+</div>
 
 	<%@ include file="../include/footer.jsp"%>
 </body>

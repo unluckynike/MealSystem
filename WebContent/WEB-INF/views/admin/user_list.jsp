@@ -58,8 +58,8 @@
 		</div>
 	</div>
 
-
-	<table class="table">
+<div class="container-fluid">
+	<table class="table table-bordered ">
 		<thead class="thead-dark">
 			<tr>
 				<th scope="col">id</th>
@@ -89,7 +89,7 @@
 						</form>
 
 						<form action="${pageContext.request.contextPath}/UserListUpdate.do"
-						      method="post">
+						      method="post" style="margin-top: 10px;">
 							<input type=hidden name=id value="${user.id}"> <input
 								type="submit" class="btn btn-primary" value="修改">
 						</form>
@@ -99,6 +99,7 @@
 			</c:forEach>
 		</tbody>
 	</table>
+</div>	
 	<!--  
 	<c:if test="${(sessionScope.ID > 0 )}">
 		<script>
