@@ -1,5 +1,7 @@
 eclipse.preferences.version=1
 encoding//WebContent/Index.jsp=UTF-8
+encoding//WebContent/WEB-INF/errors/404.jsp=UTF-8
+encoding//WebContent/WEB-INF/errors/500.jsp=UTF-8
 encoding//WebContent/WEB-INF/views/HomePages.jsp=UTF-8
 encoding//WebContent/WEB-INF/views/HomePagesFoods.jsp=UTF-8
 encoding//WebContent/WEB-INF/views/Login.jsp=UTF-8

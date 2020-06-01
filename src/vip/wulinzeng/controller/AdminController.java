@@ -152,6 +152,12 @@ public class AdminController {
 	}
 	
 	//菜品管理
+	/**
+	 *  查询菜品
+	 * @param model
+	 * @return
+	 * @throws SQLException
+	 */
 	@RequestMapping(value = "/FoodList")
 	public ModelAndView foodList(ModelAndView model) throws SQLException {
 		model.addObject("foodlist",fooddao.addminQueryFood(-1, "") );
@@ -167,6 +173,7 @@ public class AdminController {
 		model.setViewName("admin/food_list");
 		return model;
 	}
+	
 	
 	
 	//分类管理
