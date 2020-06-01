@@ -19,13 +19,25 @@
 .mybtn14_3 a {
 	color: #fff;
 }
+
+body {
+	background: linear-gradient(60deg, rgba(255, 165, 150, 0.01) 5%,
+		rgba(208, 255, 0, 0.151)) 0% 0%/cover,
+		url("https://cdn.jsdelivr.net/gh/unluckynike/blogimg/images/dish-918613_1920.jpg"),
+		url("https://cdn.jsdelivr.net/gh/unluckynike/blogimg/images/dish-918613_1920.jpg")
+		0px 0px;
+	background-attachment: fixed;
+	margin: 0;
+	color: #34495e;
+}
+
 </style>
 </head>
 <body>
 
 	<%@ include file="../include/top.jsp"%>
 
-	<div class="container">
+	<div class="container ">
 		<div class="row">
 			<div class="col-sm">
 
@@ -43,6 +55,7 @@
 				</form>
 
 			</div>
+			
 			<div class="col-sm">
 				<div class="mybtn14_3" style="float:left">
 					<a href="${pageContext.request.contextPath}/UserListAdd.do" class="btn btn-success" style="">添加新用户</a>
@@ -58,8 +71,8 @@
 		</div>
 	</div>
 
-<div class="container-fluid">
-	<table class="table table-bordered ">
+<div class="container-sm">
+	<table class="table table-bordered " >
 		<thead class="thead-dark">
 			<tr>
 				<th scope="col">id</th>

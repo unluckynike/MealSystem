@@ -5,6 +5,18 @@
 <head>
 <meta charset="utf-8">
 <title>welcome</title>
+<style type="text/css">
+body {
+	background: linear-gradient(60deg, rgba(255, 165, 150, 0.01) 5%,
+		rgba(208, 255, 0, 0.151)) 0% 0%/cover,
+		url("https://cdn.jsdelivr.net/gh/unluckynike/blogimg/images/dish-918613_1920.jpg"),
+		url("https://cdn.jsdelivr.net/gh/unluckynike/blogimg/images/dish-918613_1920.jpg")
+		0px 0px;
+	background-attachment: fixed;
+	margin: 0;
+	color: #34495e;
+}
+</style>
 </head>
 <body>
 	<div title="欢迎使用" style="padding: 20px; overflow: hidden; color: red;">
@@ -19,7 +31,7 @@
 		<p>Java版本：JDK 13</p>
 		<p>服务器：Tomcat 9.0</p>
 		<p>数据库：MySQL 5.7</p>
-		<p>系统采用技术： JavaSE+SpringMVC+JSP+Servlet+BootStrap+JDBC+JSTL</p>
+		<p>系统采用技术： JavaSE+Spring+SpringMVC+JSP+Servlet+BootStrap+JDBC+JSTL</p>
 	</div>
 </body>
 </html>

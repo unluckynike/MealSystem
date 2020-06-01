@@ -71,7 +71,7 @@ public class SystemController {
 		if (user.getIdentString().equals("1")) {
 			model.setViewName("admin/AdminIndex");
 		} else {
-			model.setViewName("UserIndex");
+			model.setViewName("user/UserIndex");
 		}
 		return model;
 	}

@@ -9,7 +9,18 @@
 	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
 	crossorigin="anonymous">
 <title>添加新用户</title>
-
+<style type="text/css">
+body {
+	background: linear-gradient(60deg, rgba(255, 165, 150, 0.01) 5%,
+		rgba(208, 255, 0, 0.151)) 0% 0%/cover,
+		url("https://cdn.jsdelivr.net/gh/unluckynike/blogimg/images/wine-1952051_1920.jpg"),
+		url("https://cdn.jsdelivr.net/gh/unluckynike/blogimg/images/wine-1952051_1920.jpg")
+		0px 0px;
+	background-attachment: fixed;
+	margin: 0;
+	color: #34495e;
+}
+</style>
 </head>
 <body>
 
@@ -81,7 +92,7 @@
 				</div>
 
 			</div>
-			<div class="col-sm">正在建设中</div>
+			
 
 		</div>
 	</div>

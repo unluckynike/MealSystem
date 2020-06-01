@@ -10,6 +10,18 @@
 	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
 	crossorigin="anonymous">
 <title>菜品管理</title>
+<style>
+body {
+	background: linear-gradient(60deg, rgba(255, 165, 150, 0.01) 5%,
+		rgba(208, 255, 0, 0.151)) 0% 0%/cover,
+		url("https://cdn.jsdelivr.net/gh/unluckynike/blogimg/images/dish-918613_1920.jpg"),
+		url("https://cdn.jsdelivr.net/gh/unluckynike/blogimg/images/dish-918613_1920.jpg")
+		0px 0px;
+	background-attachment: fixed;
+	margin: 0;
+	color: #34495e;
+}
+</style>
 </head>
 <body>
 
@@ -19,7 +31,8 @@
 		<div class="row">
 			<div class="col-sm">
 
-				<form action="${pageContext.request.contextPath}/FoodListQuery.do" method="post">
+				<form action="${pageContext.request.contextPath}/FoodListQuery.do"
+					method="post">
 					<div class="input-group mb-3">
 						<input type="text" name="searchfood" class="form-control"
 							placeholder="foodname" aria-label="Recipient's "
@@ -34,12 +47,12 @@
 			</div>
 			<div class="col-sm">
 				<div class="mybtn14_3" style="float: left">
-					<a href="${pageContext.request.contextPath}/.do"
-						class="btn btn-success" style="">添加新菜品</a>
+					<a href="${pageContext.request.contextPath}/FoodAdd.do"
+						class="btn btn-success">添加新菜品</a>
 				</div>
 				<div class="mybtn14_3" style="float: left; margin-left: 10px;">
 					<a href="${pageContext.request.contextPath}/FoodTypeList.do"
-						class="btn btn-success" style="">分类管理</a>
+						class="btn btn-success">分类管理</a>
 				</div>
 				<div class="mybtn14_3" style="float: left; margin-left: 10px;">
 					<a href="${pageContext.request.contextPath}/BackAdminIndex.do"
@@ -52,53 +65,55 @@
 		</div>
 	</div>
 
-<div class="container-fluid">
+	<div class="container-md">
 
-	<table class="table table-bordered" >
-		<thead class="thead-light">
-			<tr>
-				<th scope="col">id</th>
-				<th scope="col">菜名</th>
-				<th scope="col">特色</th>
-				<th scope="col">食材</th>
-				<th scope="col">价格</th>
-				<th scope="col">种类</th>
-				<th scope="col">图片</th>
-				<th scope="col">销量</th>
-				<th scope="col">评价</th>
-				<th scope="col">操作</th>
-			</tr>
-		</thead>
-		<c:forEach items="${foodlist}" var="food" varStatus="vs">
-			<tbody>
-				<tr >
-					<th scope="row">${food.id }</th>
-					<td>${food.foodnameString }</td>
-					<td>${food.featureString }</td>
-					<td>${food.materialString }</td>
-					<td>${food.price }&nbsp;元</td>
-					<td>${food.type }</td>
-					<td><img src="${pageContext.request.contextPath}/${food.pictureString }" ></td>
-					<td>${food.hits }</td>
-					<td>${food.comment }</td>
-					<td>
-						<form action="${pageContext.request.contextPath}/.do"
-							method="post">
-							<input type=hidden name=id value="${food.id }"> <input
-								type="submit" class="btn btn-danger" value="删除">
-						</form>
-
-						<form action="${pageContext.request.contextPath}/.do"
-							method="post" style="margin-top: 10px;">
-							<input type=hidden name=id value="${food.id }"> <input
-								type="submit" class="btn btn-primary" value="修改">
-						</form>
-					</td>
+		<table class="table table-bordered">
+			<thead class="thead-light">
+				<tr>
+					<th scope="col">id</th>
+					<th scope="col">菜名</th>
+					<th scope="col">特色</th>
+					<th scope="col">食材</th>
+					<th scope="col">价格</th>
+					<th scope="col">种类</th>
+					<th scope="col">图片</th>
+					<th scope="col">销量</th>
+					<th scope="col">评价</th>
+					<th scope="col">操作</th>
 				</tr>
-			</tbody>
-		</c:forEach>
-	</table>
-</div>
+			</thead>
+			<c:forEach items="${foodlist}" var="food" varStatus="vs">
+				<tbody>
+					<tr>
+						<th scope="row">${food.id }</th>
+						<td>${food.foodnameString }</td>
+						<td>${food.featureString }</td>
+						<td>${food.materialString }</td>
+						<td>${food.price }&nbsp;元</td>
+						<td>${food.type }</td>
+						<td><img
+							src="${pageContext.request.contextPath}/${food.pictureString }"
+							style="display: block; padding: 1px; background: white; border: 1px solid black;"></td>
+						<td>${food.hits }</td>
+						<td>${food.comment }</td>
+						<td>
+							<form action="${pageContext.request.contextPath}/.do"
+								method="post">
+								<input type=hidden name=id value="${food.id }"> <input
+									type="submit" class="btn btn-danger" value="删除">
+							</form>
+
+							<form action="${pageContext.request.contextPath}/.do"
+								method="post" style="margin-top: 10px;">
+								<input type=hidden name=id value="${food.id }"> <input
+									type="submit" class="btn btn-primary" value="修改">
+							</form>
+						</td>
+					</tr>
+				</tbody>
+			</c:forEach>
+		</table>
+	</div>
 
 	<%@ include file="../include/footer.jsp"%>
 </body>

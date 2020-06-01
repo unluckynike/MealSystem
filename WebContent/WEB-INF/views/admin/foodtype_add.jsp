@@ -9,18 +9,28 @@
 	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
 	crossorigin="anonymous">
 <title>添加菜品分类</title>
+<style>
+body {
+	/*background-color: #eaeaea;*/
+	background: linear-gradient(60deg, rgba(255, 165, 150, 0.01) 5%,
+		rgba(208, 255, 0, 0.151)) 0% 0%/cover,
+		url("https://cdn.jsdelivr.net/gh/unluckynike/blogimg/images/food-3219476_1920.jpg"),
+		url("https://cdn.jsdelivr.net/gh/unluckynike/blogimg/images/food-3219476_1920.jpg")
+		0px 0px;
+	background-attachment: fixed;
+	margin: 0;
+	color: #34495e;
+}
+</style>
 </head>
 <body>
 	<%@ include file="../include/top.jsp"%>
+	
 
-	<div class="container"  >
-		<div class="row">
-			<div class="col">
-				<img src="${pageContext.request.contextPath}/images/food0.jpg"
-					class="img-thumbnail">
-			</div>
-			<div class="col">
 
+	<div class="container-xl" style="margin-top:250px">
+	
+	
 				<div class="card mb-3" style="max-width: 540px;">
 					<div class="row no-gutters">
 						<div class="col-md-4">
@@ -54,10 +64,9 @@
 						</div>
 					</div>
 				</div>
-			</div>
-		</div>
+				
+	
 	</div>
-
 
 	<%@ include file="../include/footer.jsp"%>
 </body>

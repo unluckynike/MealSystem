@@ -6,10 +6,12 @@ import java.sql.SQLException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.io.FilenameUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import vip.wulinzeng.dao.FoodTypedao;
@@ -174,6 +176,29 @@ public class AdminController {
 		return model;
 	}
 	
+	@RequestMapping(value = "/FoodAdd")
+	public ModelAndView foodAdd(ModelAndView model) {
+		model.setViewName("admin/food_add");
+		return model;
+	}
+	
+	//bug
+	@RequestMapping(value = "/FoodAddDo",method = RequestMethod.POST)
+	public ModelAndView foodAddDo(
+			@RequestParam (name = "foodname",required = false)MultipartFile pitcture,
+			@RequestParam(name = "foodname",required = true)String foodname,
+			@RequestParam(name = "feature",required = true)String feature,
+			@RequestParam(name = "material",required = true)String material,
+			@RequestParam(name = "price",required = true)int price,
+			@RequestParam(name = "type",required = true)int type,		
+			ModelAndView model) {
+		System.out.println("controller-foodAddDo:"+foodname+" "+feature+" "+material+" "+price+" "+type+" "+pitcture);
+		String ext=FilenameUtils.getExtension(pitcture.getOriginalFilename());
+		System.out.println("pitctureString:"+ext);
+		
+		model.setViewName("admin/food_list");
+		return model;
+	}
 	
 	
 	//分类管理

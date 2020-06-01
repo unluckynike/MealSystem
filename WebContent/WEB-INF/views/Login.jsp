@@ -116,11 +116,11 @@ body {
 			</form>
 		</div>
 	</div>
-
 			<%@ include file="include/footer.jsp"%>
 
-
-
+	<script color="0,0,0" opacity="0.8" count="200"
+		src="https://cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.js"
+		type="text/javascript" charset="utf-8"></script>
 	<script src="../../static/jquery.min.js"></script>
 	<script src="../../static/popper.js"></script>
 	<script src="../../static/bootstrap-material-design.js"></script>
