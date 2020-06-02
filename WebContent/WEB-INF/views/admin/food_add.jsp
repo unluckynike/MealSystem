@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
+<meta charset="ISO-8859-1">
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
 	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
@@ -84,7 +84,7 @@ body {
 						<div class="input-group-prepend">
 							<span class="input-group-text" id="inputGroup-sizing-lg">图片</span>
 						</div>
-						<input type="file" name="pitcture" class="form-control"
+						<input type="file" name="pitcture" id="pitcture" class="form-control"
 							aria-label="Sizing example input"
 							aria-describedby="inputGroup-sizing-lg">
 					</div>

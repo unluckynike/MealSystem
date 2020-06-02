@@ -97,13 +97,13 @@ body {
 						<td>${food.hits }</td>
 						<td>${food.comment }</td>
 						<td>
-							<form action="${pageContext.request.contextPath}/.do"
+							<form action="${pageContext.request.contextPath}/FoodDelete.do"
 								method="post">
 								<input type=hidden name=id value="${food.id }"> <input
 									type="submit" class="btn btn-danger" value="删除">
 							</form>
 
-							<form action="${pageContext.request.contextPath}/.do"
+							<form action="${pageContext.request.contextPath}/FoodUpdate.do"
 								method="post" style="margin-top: 10px;">
 								<input type=hidden name=id value="${food.id }"> <input
 									type="submit" class="btn btn-primary" value="修改">

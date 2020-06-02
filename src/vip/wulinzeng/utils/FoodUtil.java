@@ -35,7 +35,17 @@ public class FoodUtil {
 		default:
 			return comment + "";
 		}
-
 	}
+	
+	public static int oppositeFoodComment(String commentString) {
+		if (commentString.equals("厨师推荐")) {
+			return 0;
+		}else if (commentString.equals("正常菜品")) {
+			return 0;
+		} else {
+			return Integer.parseInt(commentString);
+		}
+	}
+	
 
 }
