@@ -40,4 +40,12 @@
         </property>
 	</bean>
 	
+	<!-- 未登录拦截器 -->
+	<mvc:interceptors>
+    <mvc:interceptor>
+        <mvc:mapping path="/*.do"/>
+        <bean class="vip.wulinzeng.interceptor.NotLoggedInToIntercept"/>
+    </mvc:interceptor>
+</mvc:interceptors>
+
 </beans>

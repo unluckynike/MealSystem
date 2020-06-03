@@ -98,7 +98,7 @@ body {
 							action="${pageContext.request.contextPath}/UserListDelete.do"
 							method="post">
 							<input type=hidden name=id value="${user.id}"> <input
-								type="submit" class="btn btn-danger" value="删除">
+								type="submit" class="btn btn-danger" value="删除" >
 						</form>
 
 						<form action="${pageContext.request.contextPath}/UserListUpdate.do"

@@ -2,6 +2,9 @@ package vip.wulinzeng.controller;
 
 import java.sql.SQLException;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -32,7 +35,7 @@ public class SystemController {
 	@RequestMapping(value = "/QueryFood", method = RequestMethod.POST)
 	public ModelAndView queryfoodAndView(@RequestParam(name = "id", required = false) int ID, ModelAndView model)
 			throws SQLException {
-		//System.out.println(ID + "testid");
+		// System.out.println(ID + "testid");
 		Food queryFood = new QueryFooddao().HomePageQueryfood(ID);
 		model.addObject("img", queryFood.getPictureString());
 		model.addObject("name", queryFood.getFoodnameString());
@@ -48,6 +51,7 @@ public class SystemController {
 
 	/**
 	 * 登录
+	 * 
 	 * @param model
 	 * @return
 	 */
@@ -56,49 +60,53 @@ public class SystemController {
 		model.setViewName("Login");
 		return model;
 	}
-	
-	
-	@RequestMapping(value = "/UserLogin",method = RequestMethod.POST)
-	public ModelAndView userLogin(
-			@RequestParam(name = "username",required = true) String usernameString,
-			@RequestParam(name = "password",required = true) String passwordString,
-	       ModelAndView model) throws SQLException {
-		User user=new Userdao().queryUser(usernameString, passwordString);
+
+	@RequestMapping(value = "/UserLogin", method = RequestMethod.POST)
+	public ModelAndView userLogin(@RequestParam(name = "username", required = true) String usernameString,
+			@RequestParam(name = "password", required = true) String passwordString, ModelAndView model,
+			HttpServletRequest request) throws SQLException {
+		User user = new Userdao().queryUser(usernameString, passwordString);
+		HttpSession session = request.getSession();
+		session.setAttribute("username", user.getUsernameString());
+		/**
+		 * bug 用户名 密码错误 返回404
+		 */
 		if (user==null) {
-			model.setViewName("PasswordOrUserameErro");
-			return model;
+			model.setViewName("PasswordOrUserameErro.jsp");
 		}
 		if (user.getIdentString().equals("1")) {
 			model.setViewName("admin/AdminIndex");
-		} else {
+		}
+		if (user.getIdentString().equals("0")) {
 			model.setViewName("user/UserIndex");
 		}
 		return model;
 	}
-	
+
 	/**
 	 * 新用户注册
+	 * 
 	 * @param model
 	 * @return
 	 */
-	@RequestMapping(value = "/Register",method = RequestMethod.GET)
+	@RequestMapping(value = "/Register", method = RequestMethod.GET)
 	public ModelAndView Register(ModelAndView model) {
 		model.setViewName("Register");
 		return model;
 	}
-	
-	@RequestMapping(value = "/UserRegister",method = RequestMethod.POST )
-	public ModelAndView userRegister(
-			@RequestParam(name = "username",required = true ) String usernameString,
-			@RequestParam(name = "password",required = true ) String passwordString,
-			@RequestParam(name = "telephone",required = true ) String telephoneString,
-			@RequestParam(name = "address",required = true )   String addressString,
-			ModelAndView model) throws SQLException {
-		//System.out.println(usernameString+" "+passwordString+" "+telephoneString+" "+addressString+" ");
-		String identString="0";//用户在登录页面注册均为普通用户
-		if (new Userdao().addUser(usernameString, passwordString, identString,telephoneString, addressString)) {
+
+	@RequestMapping(value = "/UserRegister", method = RequestMethod.POST)
+	public ModelAndView userRegister(@RequestParam(name = "username", required = true) String usernameString,
+			@RequestParam(name = "password", required = true) String passwordString,
+			@RequestParam(name = "telephone", required = true) String telephoneString,
+			@RequestParam(name = "address", required = true) String addressString, ModelAndView model)
+			throws SQLException {
+		// System.out.println(usernameString+" "+passwordString+" "+telephoneString+"
+		// "+addressString+" ");
+		String identString = "0";// 用户在登录页面注册均为普通用户
+		if (new Userdao().addUser(usernameString, passwordString, identString, telephoneString, addressString)) {
 			model.setViewName("RegisterSuccess");
-		}else {
+		} else {
 			model.setViewName("RegisterFaild");
 		}
 		return model;
