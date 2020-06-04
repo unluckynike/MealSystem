@@ -34,13 +34,13 @@
 			</div>
 
 			<div class="mybtn14_3" style="float: left; margin-left: 10px;">
-				<a href="${pageContext.request.contextPath}/.do"
+				<a href="${pageContext.request.contextPath}/UserIndex.do"
 					class="btn btn-success" style="">回到首页</a>
 			</div>
 
 		</div>
 		<div class="alert alert-danger" role="alert">
-			每次进行完管理操作请点击查询菜品按钮以确认操作成功</div>
+			每次进行完操作请点击查询菜品按钮以确认操作成功</div>
 	</div>
 	</div>
 
@@ -81,7 +81,7 @@
 									action="${pageContext.request.contextPath}/UserOrderCar.do"
 									method="post">
 									<input type=hidden name=id value="${food.id }"> <input
-										type="submit" class="btn btn-danger" value="加入购物车">
+										type="submit" class="btn btn-primary" value="加入购物车">
 								</form>
 							</div>
 							<div style="margin-top:5px">
@@ -89,7 +89,7 @@
 									action="${pageContext.request.contextPath}/UserCancleOrder.do"
 									method="post">
 									<input type=hidden name=id value="${food.id }"> <input
-										type="submit" class="btn btn-danger" value="取消">
+										type="submit" class="btn btn-success" value="取消">
 								</form>
 							</div>
 						</td>

@@ -78,7 +78,7 @@ public class DiningCardao {
 		}
 		prepareStatement.close();
 		connection.close();
-		System.out.println("retList:"+retList);
+		//System.out.println("retList:"+retList);
 		return retList;
 	}
 

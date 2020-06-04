@@ -1,6 +1,7 @@
 package vip.wulinzeng.controller;
 
 import java.sql.SQLException;
+import java.util.Enumeration;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -62,20 +63,18 @@ public class SystemController {
 	}
 
 	@RequestMapping(value = "/UserLogin", method = RequestMethod.POST)
-	public ModelAndView userLogin(
-			@RequestParam(name = "username", required = true) String usernameString,
-			@RequestParam(name = "password", required = true) String passwordString,
-			ModelAndView model,
+	public ModelAndView userLogin(@RequestParam(name = "username", required = true) String usernameString,
+			@RequestParam(name = "password", required = true) String passwordString, ModelAndView model,
 			HttpServletRequest request) throws SQLException {
 		User user = new Userdao().queryUser(usernameString, passwordString);
 		HttpSession session = request.getSession();
-		session.setAttribute("username", user.getUsernameString());//session: username
-		session.setAttribute("userid", user.getId());//session :userid
+		session.setAttribute("username", user.getUsernameString());// session: username
+		session.setAttribute("userid", user.getId());// session :userid
 		model.addObject("username", user.getUsernameString());
 		/**
 		 * bug 用户名 密码错误 返回404
 		 */
-		if (user==null) {
+		if (user == null) {
 			model.setViewName("PasswordOrUserameErro.jsp");
 		}
 		if (user.getIdentString().equals("1")) {
@@ -115,4 +114,15 @@ public class SystemController {
 		}
 		return model;
 	}
+
+	//退出系統
+	@RequestMapping(value = "/Exit")
+	public ModelAndView exit(ModelAndView model,HttpServletRequest request) {
+		 Enumeration<String> em = request.getSession().getAttributeNames();
+		      while(em.hasMoreElements()){
+		        request.getSession().removeAttribute(em.nextElement().toString());
+		model.setViewName("HomePages");
+	     }
+		  	return model;
+   }
 }

@@ -18,7 +18,7 @@
 		<li class="nav-item"><a class="nav-link " href="#">管理员:&nbsp;${username}</a></li>
 		<li class="nav-item"><a class="nav-link active" href="FoodList.do">菜品管理</a>
 		</li>
-		<li class="nav-item"><a class="nav-link " href="HomePages.do">退出</a></li>
+		<li class="nav-item"><a class="nav-link " href="Exit.do">退出</a></li>
 	</ul>
 	<%@ include file="../include/welcome.jsp"%>
 	<%@ include file="../include/footer.jsp"%>

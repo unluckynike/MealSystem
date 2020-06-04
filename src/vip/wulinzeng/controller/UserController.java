@@ -29,6 +29,12 @@ public class UserController {
 		this.fooddao = new Fooddao();
 	}
 
+	@RequestMapping(value = "/UserIndex")
+	public ModelAndView userIndex(ModelAndView model) {
+		model.setViewName("user/UserIndex");
+		return model;
+	}
+	
 	@RequestMapping(value = "/UserOrder")
 	public ModelAndView userOrder(ModelAndView model) throws SQLException {
 		model.addObject("foodlist", fooddao.queryFood(-1, ""));
@@ -92,4 +98,12 @@ public class UserController {
 		return model;
 	}
 	
+	@RequestMapping(value = "/UserCheckOrder")
+	public ModelAndView userCheckOrder(ModelAndView model,HttpServletRequest request) throws SQLException{
+		int userID=(int)request.getSession().getAttribute("userid");
+		model.addObject("userName", (String) request.getSession().getAttribute("username"));
+		model.addObject("foodlist", diningCardao.checkOrderCar(userID));
+		model.setViewName("user/user_checkOrderCar");
+		return model;
+	}
 }

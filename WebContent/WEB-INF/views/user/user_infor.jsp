@@ -77,13 +77,17 @@
 										type="submit" class="btn btn-success" value="确认修改"
 										style="margin-right: 20px;"> <input type="reset"
 										class="btn btn-primary" value="重置">
+										
+							<div class="mybtn14_3" style="float: left; margin-right: 20px;">
+				                   <a href="${pageContext.request.contextPath}/UserIndex.do"
+					                  class="btn btn-success" style="">回到首页</a>
+			                                    </div>
 								</div>
+								
 							</form>
 						</c:forEach>
-
 					</div>
 				</div>
-
 			</div>
 		</div>
 	</div>
