@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+	pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,20 +11,18 @@
 <title>用首页</title>
 </head>
 <body>
-  
-  	<%@ include file="../include/top.jsp"%>
+
+	<%@ include file="../include/top.jsp"%>
 	<ul class="nav nav-pills nav-justified">
-		<li class="nav-item"><a class="nav-link active" href="UserOrder.do">去点餐</a>
-		</li>
+		<li class="nav-item"><a class="nav-link active"
+			href="UserOrder.do">去点餐</a></li>
 		<li class="nav-item"><a class="nav-link " href="#">用户:&nbsp;${username}</a></li>
-		<li class="nav-item"><a class="nav-link active" href=".do">查看购物车</a>
-		</li>
-		<li class="nav-item"><a class="nav-link " href="HomePages.do">退出</a></li>
+		<li class="nav-item"><a class="nav-link active" href=".do">查看购物车</a></li>
+		<li class="nav-item"><a class="nav-link " href="UserInfor.do">个人资料</a></li>
+		<li class="nav-item"><a class="nav-link active" href="HomePages.do">退出</a></li>
 	</ul>
 
 	<%@ include file="../include/footer.jsp"%>
-	
 
-  
 </body>
 </html>

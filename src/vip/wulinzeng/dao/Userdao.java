@@ -90,7 +90,7 @@ public class Userdao {
 	 * @return retList
 	 * @throws SQLException
 	 */
-	public ArrayList<User> adminQueryUser(int id,String inputString) throws SQLException {
+	public ArrayList<User> QueryUser(int id,String inputString) throws SQLException {
 		ArrayList<User> retList = new ArrayList<User>();
 		String sqlString = "SELECT * FROM user ";// PS末尾多一个空格
 		if ((id==-1)&&(!StringUtil.isEmpty(inputString))) {// 模糊查询
@@ -153,7 +153,7 @@ public class Userdao {
 	 * @return  flag
 	 * @throws SQLException
 	 */
-	public boolean addminUpdateUser(int id, String usernameString, String passwordString, String identsString,String telephoneString, String addressString) throws SQLException {
+	public boolean UpdateUser(int id, String usernameString, String passwordString, String identsString,String telephoneString, String addressString) throws SQLException {
 		boolean flag=false;
 		String sqlString="UPDATE user SET username=?,password=?,ident=?,telephone=?,address=? WHERE id=?";
 		Connection updateConnection=new DBUtil().getCon();

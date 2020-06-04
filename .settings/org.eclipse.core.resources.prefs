@@ -22,4 +22,6 @@ encoding//WebContent/WEB-INF/views/include/footer.jsp=UTF-8
 encoding//WebContent/WEB-INF/views/include/top.jsp=UTF-8
 encoding//WebContent/WEB-INF/views/include/welcome.jsp=UTF-8
 encoding//WebContent/WEB-INF/views/user/UserIndex.jsp=UTF-8
+encoding//WebContent/WEB-INF/views/user/user_checkOrderCar.jsp=UTF-8
+encoding//WebContent/WEB-INF/views/user/user_infor.jsp=UTF-8
 encoding//WebContent/WEB-INF/views/user/user_order.jsp=UTF-8

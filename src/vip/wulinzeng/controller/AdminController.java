@@ -64,7 +64,7 @@ public class AdminController {
 	 */
 	@RequestMapping(value = "/UserList", method = RequestMethod.GET)
 	public ModelAndView userList(ModelAndView model) throws SQLException {
-		model.addObject("queryuser", userdao.adminQueryUser(-1, ""));
+		model.addObject("queryuser", userdao.QueryUser(-1, ""));
 		model.setViewName("admin/user_list");
 		return model;
 	}
@@ -80,7 +80,7 @@ public class AdminController {
 	@RequestMapping(value = "/UserListQuery", method = RequestMethod.POST)
 	public ModelAndView userListQuery(@RequestParam(name = "searchuser", required = true) String searchuserString,
 			ModelAndView model) throws SQLException {
-		model.addObject("queryuser", userdao.adminQueryUser(-1, searchuserString));
+		model.addObject("queryuser", userdao.QueryUser(-1, searchuserString));
 		model.setViewName("admin/user_list");
 		return model;
 	}
@@ -147,8 +147,8 @@ public class AdminController {
 	@RequestMapping(value = "/UserListUpdate")
 	public ModelAndView updateUser(@RequestParam(name = "id", required = true) int updateID, ModelAndView model)
 			throws SQLException {
-		model.addObject("username", userdao.adminQueryUser(updateID, "").get(0).getUsernameString());
-		model.addObject("updateuser", userdao.adminQueryUser(updateID, ""));
+		model.addObject("username", userdao.QueryUser(updateID, "").get(0).getUsernameString());
+		model.addObject("updateuser", userdao.QueryUser(updateID, ""));
 		model.setViewName("admin/user_update");
 		return model;
 	}
@@ -163,7 +163,7 @@ public class AdminController {
 			throws SQLException {
 		// System.out.println("controller-UserListUpdateDo:"+id+" "+usernameString+"
 		// "+passwordString+" "+identString+" "+telephoneString+" "+addressString);
-		if (userdao.addminUpdateUser(id, usernameString, passwordString, identString, telephoneString, addressString)) {
+		if (userdao.UpdateUser(id, usernameString, passwordString, identString, telephoneString, addressString)) {
 			model.setViewName("admin/user_list");
 		} else {
 			System.out.println("controller-UserListUpdateDo:ÐÞ¸ÄÊ§°Ü");
