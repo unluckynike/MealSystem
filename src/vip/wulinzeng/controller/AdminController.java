@@ -30,9 +30,16 @@ import vip.wulinzeng.dao.Userdao;
 @Controller
 public class AdminController {
 
-	private Userdao userdao = new Userdao();
-	private Fooddao fooddao = new Fooddao();
-	private FoodTypedao foodtypedao = new FoodTypedao();
+	private Userdao userdao ;
+	private Fooddao fooddao ;
+	private FoodTypedao foodtypedao ;
+
+	
+	public AdminController() {
+		this.userdao= new Userdao();
+		this.fooddao = new Fooddao();
+		this.foodtypedao = new FoodTypedao();
+	}
 
 	@RequestMapping(value = "/HomePages")
 	public ModelAndView welcome(ModelAndView model) {

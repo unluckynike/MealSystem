@@ -62,12 +62,16 @@ public class SystemController {
 	}
 
 	@RequestMapping(value = "/UserLogin", method = RequestMethod.POST)
-	public ModelAndView userLogin(@RequestParam(name = "username", required = true) String usernameString,
-			@RequestParam(name = "password", required = true) String passwordString, ModelAndView model,
+	public ModelAndView userLogin(
+			@RequestParam(name = "username", required = true) String usernameString,
+			@RequestParam(name = "password", required = true) String passwordString,
+			ModelAndView model,
 			HttpServletRequest request) throws SQLException {
 		User user = new Userdao().queryUser(usernameString, passwordString);
 		HttpSession session = request.getSession();
-		session.setAttribute("username", user.getUsernameString());
+		session.setAttribute("username", user.getUsernameString());//session: username
+		session.setAttribute("userid", user.getId());//session :userid
+		model.addObject("username", user.getUsernameString());
 		/**
 		 * bug 用户名 密码错误 返回404
 		 */

@@ -15,7 +15,7 @@
 	<ul class="nav nav-pills nav-justified">
 		<li class="nav-item"><a class="nav-link active" href="UserList.do">用户管理</a>
 		</li>
-		<li class="nav-item"><a class="nav-link " href="#">身份：管理员</a></li>
+		<li class="nav-item"><a class="nav-link " href="#">管理员:&nbsp;${username}</a></li>
 		<li class="nav-item"><a class="nav-link active" href="FoodList.do">菜品管理</a>
 		</li>
 		<li class="nav-item"><a class="nav-link " href="HomePages.do">退出</a></li>

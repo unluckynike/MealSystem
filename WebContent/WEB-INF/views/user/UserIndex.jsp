@@ -4,9 +4,27 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Index</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+	crossorigin="anonymous">
+<title>用首页</title>
 </head>
 <body>
-  user登录
+  
+  	<%@ include file="../include/top.jsp"%>
+	<ul class="nav nav-pills nav-justified">
+		<li class="nav-item"><a class="nav-link active" href="UserOrder.do">去点餐</a>
+		</li>
+		<li class="nav-item"><a class="nav-link " href="#">用户:&nbsp;${username}</a></li>
+		<li class="nav-item"><a class="nav-link active" href=".do">查看购物车</a>
+		</li>
+		<li class="nav-item"><a class="nav-link " href="HomePages.do">退出</a></li>
+	</ul>
+
+	<%@ include file="../include/footer.jsp"%>
+	
+
+  
 </body>
 </html>
