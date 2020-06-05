@@ -22,7 +22,7 @@ body {
 	<div title="欢迎使用" style="padding: 20px; overflow: hidden; color: red;">
 		<p style="font-size: 25px; line-height: 30px; height: 30px;">欢迎使网络点餐系统</p>
 		<p>开发人员：Hailin Zhou</p>
-		<p>开发周期：2020/5/27 --- 2020/6/3（共计7天）</p>
+		<p>开发周期：2020/5/27 --- 2020/6/4（共计8天）</p>
 
 		<hr />
 		<h2>系统环境</h2>

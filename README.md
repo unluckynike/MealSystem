@@ -9,7 +9,7 @@
 - Java版本：JDK13
 - 服务：Tomcat9.0
 - 数据库：MySQL5.7
-- 采用技术：系统采用技术： JavaSE+SpringMVC+JSP+Servlet+Bootstrap
+- 系统采用技术： JavaSE+Spring+SpringMVC+JSP+Servlet+Bootstrap
 
 **项目结构**
 
@@ -89,7 +89,8 @@ src-vip-wulinzeng
 
 - 查看购物车订单（已完善）
 
-- 
+  
+
 
 
 
