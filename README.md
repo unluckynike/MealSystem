@@ -5,15 +5,10 @@
 **:sparkles:系统环境**
 
 > 开发环境：Windows
-
 > 开发工具：Eclipse2019-9
-
 > Java版本：JDK13
-
 > 服务：Tomcat9.0
-
 > 数据库：MySQL5.7，Navicate工具
-
 > 系统采用技术： JavaSE+Spring+SpringMVC+JSP+Servlet+Bootstrap
 
 **:building_construction:项目结构**
