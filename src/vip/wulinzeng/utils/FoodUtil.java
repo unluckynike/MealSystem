@@ -16,7 +16,7 @@ public class FoodUtil {
 		case 3:
 			return "主食";
 		case 4:
-			return "川菜";
+			return "饮品";
 		}
 		return "暂无分类";
 	}

@@ -10,6 +10,8 @@
 > 服务：Tomcat9.0
 > 数据库：MySQL5.7，Navicate工具
 > 系统采用技术： JavaSE+Spring+SpringMVC+JSP+Servlet+Bootstrap
+>
+> 
 
 **:building_construction:项目结构**
 
@@ -156,8 +158,10 @@ sql(数据库文件)
 | userid | int      | 外键，长度11 |
 | foodid | int      | 外键，长度11 |
 
-## :framed_picture: 项目截图
+## :framed_picture: 截图示例
 
-**首页**
+****
 
 ![](infor/homepages.png)
+
+![](infor/meal.png)

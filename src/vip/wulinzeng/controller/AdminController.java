@@ -232,7 +232,7 @@ public class AdminController {
 		// System.out.println("isEmpty："+pitcture.isEmpty()+" pitctureString:"+ext);
 		String oriPitctureNameString = pitcture.getOriginalFilename();// 获取后缀名
 		String extPitctureNameString = oriPitctureNameString.substring(oriPitctureNameString.indexOf("."),
-				oriPitctureNameString.length());// 夹上点儿
+				oriPitctureNameString.length());// 加上点儿
 		picturePath = "images/newfood/" + Calendar.getInstance().getTimeInMillis() + extPitctureNameString;// 以时间点命名保证文件名称的唯一性
 		// System.out.println("picturePath:"+picturePath);
 		// picturePath:/images/newfood/......
